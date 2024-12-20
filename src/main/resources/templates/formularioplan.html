@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Formulario Plan</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <h1 th:text="${#strings.isEmpty(plan.id) ? 'Nuevo Plan' : 'Editar Plan'}"></h1>
+        <form th:action="@{/planes}" th:object="${plan}" method="post">
+            <!-- Campo oculto para el ID -->
+            <input type="hidden" th:field="*{id}">
+            
+            <!-- Campo para el Nombre -->
+            <label for="nombre">Nombre:</label>
+            <input type="text" id="nombre" th:field="*{nombre}" required />
+            <br />
+
+            <!-- Campo para la Descripción -->
+            <label for="descripcion">Descripción:</label>
+            <textarea id="descripcion" th:field="*{descripcion}" rows="4" required></textarea>
+            <br />
+
+            <button type="submit">Guardar</button>
+        </form>
+    </body>
+</html>
+
